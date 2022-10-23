@@ -34,6 +34,7 @@ const getAllTodos = async (req, res) => {
 const createNewTodo = async (req, res) => {
   const { user, title, text } = req.body;
 
+  console.log({ body: req.body });
   // Confirm data
   if (!user || !title || !text) {
     return res.status(400).json({ message: "All fields are required" });
@@ -48,7 +49,7 @@ const createNewTodo = async (req, res) => {
   // }
 
   const result = await prisma.todo.create({
-    data: { userId: user, title, text },
+    data: { userId: +user, title, text },
   });
   res.status(201).json(result);
 };
