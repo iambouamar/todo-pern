@@ -58,7 +58,7 @@ const createNewTodo = async (req, res) => {
 // @route PATCH /todos
 // @access Private
 const updateTodo = async (req, res) => {
-  const { id, user, title, text, completed } = req.body;
+  const { id, title, text, completed } = req.body;
 
   // Confirm data
   if (!id || !title || !text || typeof completed !== "boolean") {
@@ -66,8 +66,8 @@ const updateTodo = async (req, res) => {
   }
 
   // Confirm todo exists to update
-  const todo = await prisma.user.findUnique({
-    where: { id },
+  const todo = await prisma.todo.findUnique({
+    where: { id: +id },
   });
 
   if (!todo) {

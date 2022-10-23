@@ -51,7 +51,7 @@ const TodosList = () => {
         <thead className="table__thead">
           <tr>
             <th scope="col" className="table__th todo__status">
-              Username
+              Todo Status
             </th>
             <th scope="col" className="table__th todo__created">
               Created
